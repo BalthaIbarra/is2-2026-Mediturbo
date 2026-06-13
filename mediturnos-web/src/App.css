@@ -1,0 +1,305 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --az:#0f2850;--azm:#19468c;--do:#be9b5a;--bl:#f8fafd;
+  --gt:#5a6473;--br:#d2dce8;--vd:#228b50;--rj:#be2d2d;
+  --aza:#1e64b9;--vi:#78509a;--fo:#eef2fb;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--fo);color:#1a2332;min-height:100vh}
+button{cursor:pointer;border:none;outline:none;font-family:inherit}
+input,select{font-family:inherit;outline:none}
+
+/* ANIMACIONES */
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes slideIn{from{transform:translateX(100px);opacity:0}to{transform:none;opacity:1}}
+@keyframes rowIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+.fade-in{animation:fadeIn .35s ease}
+.fade-row{animation:rowIn .3s ease both}
+
+/* LOGIN */
+.login-wrap{display:flex;min-height:100vh}
+.login-left{
+  width:42%;background:linear-gradient(135deg,#0f2850,#19468c);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding:60px 40px;position:relative;overflow:hidden
+}
+.login-left::before{content:'';position:absolute;top:-80px;left:-80px;width:350px;height:350px;border-radius:50%;background:rgba(255,255,255,.06)}
+.login-logo{font-size:48px;font-weight:700;color:#be9b5a;width:80px;height:80px;border:3px solid #be9b5a;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.login-centro{font-family:'Playfair Display',serif;color:white;font-size:22px;text-align:center;line-height:1.4}
+.login-sub{color:#be9b5a;font-style:italic;font-size:14px;margin-top:10px;margin-bottom:40px}
+.login-right{flex:1;background:#f8fafd;display:flex;flex-direction:column;justify-content:center;padding:60px}
+.login-titulo{font-family:'Playfair Display',serif;font-size:32px;color:#0f2850;margin-bottom:6px}
+.login-subtitulo{color:#5a6473;font-style:italic;font-size:15px;margin-bottom:24px}
+.login-sep{height:2px;background:#be9b5a;margin-bottom:28px}
+.login-form{display:flex;flex-direction:column;gap:8px}
+.login-form label{font-size:11px;font-weight:600;color:#5a6473;text-transform:uppercase;letter-spacing:.5px}
+.login-form input{border:1.5px solid #d2dce8;border-radius:8px;padding:11px 14px;font-size:14px;margin-bottom:8px;transition:border .2s;background:white}
+.login-form input:focus{border-color:#19468c}
+.btn-login{background:#19468c;color:white;padding:13px;border-radius:8px;font-size:14px;font-weight:600;margin-top:8px;transition:background .2s}
+.btn-login:hover{background:#0f2850}
+.btn-login:disabled{opacity:.6}
+.login-hint{font-size:11px;color:#aaa;text-align:center;margin-top:14px;font-style:italic}
+
+/* PANEL */
+.panel-wrap{display:flex;flex-direction:column;min-height:100vh}
+.panel-header{
+  background:linear-gradient(90deg,#0f2850,#19468c);
+  padding:0 20px;display:flex;align-items:center;
+  justify-content:space-between;min-height:90px;
+  border-bottom:2px solid #be9b5a;position:sticky;top:0;z-index:100
+}
+.header-izq{display:flex;align-items:center;gap:12px}
+.burger{background:none;color:white;font-size:22px;padding:4px 8px;display:none}
+.header-icono{width:40px;height:40px;border-radius:50%;background:#be9b5a;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:white;flex-shrink:0}
+.header-nombre{color:white;font-size:15px;font-weight:600}
+.header-usuario{color:#be9b5a;font-size:12px;font-style:italic}
+.header-contadores{display:flex;gap:16px}
+.contador{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.12);padding:8px 16px;border-radius:10px}
+.cnt-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700}
+.cnt-lbl{font-size:9px;color:rgba(255,255,255,.7);letter-spacing:.5px;margin-top:2px}
+.amarillo{color:#e6a020}.verde{color:#3cba6e}.azul{color:#5aaaf0}
+
+.panel-body{display:flex;flex:1;position:relative;overflow:hidden}
+.sidebar-overlay{display:none}
+
+/* SIDEBAR */
+.sidebar{
+  width:190px;background:linear-gradient(180deg,#0f2850,#14366e);
+  padding:20px 0;display:flex;flex-direction:column;gap:3px;
+  flex-shrink:0;transition:transform .25s
+}
+.sidebar-label{color:rgba(255,255,255,.35);font-size:10px;letter-spacing:1px;padding:0 16px 8px;text-transform:uppercase}
+.side-btn{text-align:left;padding:9px 16px;font-size:13px;color:rgba(255,255,255,.85);background:rgba(255,255,255,.06);border-radius:0;transition:all .15s;border-left:3px solid transparent}
+.side-btn:hover{background:rgba(255,255,255,.16);border-left-color:rgba(255,255,255,.4)}
+.side-activo{background:rgba(255,255,255,.18)!important;border-left-color:#be9b5a!important}
+.sidebar-sep{height:1px;background:rgba(255,255,255,.12);margin:8px 16px}
+
+/* MAIN */
+.panel-main{flex:1;padding:18px;overflow:auto;background:#eef2fb}
+
+/* TABLA */
+.tabla-wrap{background:white;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);margin-bottom:16px}
+.tabla-titulo{padding:14px 20px;font-family:'Playfair Display',serif;font-size:17px;color:#0f2850;border-bottom:1px solid #e8eef8}
+.tabla-scroll{overflow-x:auto}
+.tabla{width:100%;border-collapse:collapse;font-size:12.5px}
+.tabla thead tr{background:#dce6f5}
+.tabla th{padding:10px 12px;text-align:left;font-size:11px;font-weight:600;color:#0f2850;white-space:nowrap}
+.tabla td{padding:9px 12px;border-bottom:1px solid #f0f4fb;white-space:nowrap}
+.tabla tr{cursor:pointer;transition:background .1s}
+.tabla tr:hover td{background:#f4f8ff}
+.fila-sel td{background:#dce8ff!important}
+.fila-confirmado td{background:#e6faee}
+.fila-cancelado td{background:#ffeded}
+.fila-atendido td{background:#e6f0ff}
+.tabla-vacia{text-align:center;color:#aaa;padding:32px;font-style:italic}
+
+/* BADGES */
+.badge{padding:3px 9px;border-radius:20px;font-size:10px;font-weight:600}
+.badge-pendiente{background:#fff3dc;color:#b87000}
+.badge-confirmado{background:#d4f5e2;color:#1a7040}
+.badge-cancelado{background:#ffe0e0;color:#aa2020}
+.badge-atendido{background:#daeeff;color:#1050a0}
+.badge-rol-admin{background:#daeeff;color:#1050a0}
+.badge-rol-medico{background:#d4f5e2;color:#1a7040}
+.badge-rol-paciente{background:#f0e0ff;color:#6030a0}
+
+/* FILTROS */
+.filtros{display:flex;gap:10px;padding:12px 20px;background:#f0f5ff;flex-wrap:wrap;align-items:center}
+.filtros input,.filtros select{border:1.5px solid #d2dce8;border-radius:8px;padding:7px 11px;font-size:12px;background:white;min-width:120px}
+.btn-limpiar{background:#8090a0;color:white;padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600}
+.btn-hist{background:#e8eef8;color:#19468c;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600}
+
+/* DASHBOARD */
+.dashboard{display:flex;flex-direction:column;gap:18px}
+.dash-bienvenida{background:linear-gradient(135deg,#0f2850,#19468c);border-radius:14px;padding:24px 28px;display:flex;justify-content:space-between;align-items:center;color:white}
+.dash-titulo{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:6px}
+.dash-sub{color:#be9b5a;font-size:13px}
+.btn-nuevo-dash{background:#be9b5a;color:white;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;white-space:nowrap}
+.btn-nuevo-dash:hover{background:#a08040}
+.dash-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.dash-card{background:white;border-radius:12px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.dash-card-icono{font-size:24px}
+.dash-card-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700}
+.dash-card-lbl{font-size:11px;color:#888;letter-spacing:.4px}
+.dash-prox{background:white;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.dash-sec-titulo{font-family:'Playfair Display',serif;color:#0f2850;margin-bottom:14px;font-size:15px}
+.dash-prox-lista{display:flex;flex-direction:column;gap:8px}
+.dash-prox-item{display:flex;align-items:center;gap:14px;padding:10px 14px;background:#f8faff;border-radius:8px;border-left:3px solid #19468c}
+.dash-prox-fecha{font-size:12px;font-weight:600;color:#19468c;min-width:130px}
+.dash-prox-pac{font-size:13px;font-weight:600;flex:1}
+.dash-prox-esp{font-size:12px;color:#888;min-width:110px}
+
+/* AGENDA */
+.agenda-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;padding:16px;overflow-x:auto}
+.agenda-dia{background:#f8faff;border-radius:10px;padding:10px;min-width:120px}
+.agenda-hoy{background:#e8f0ff;border:2px solid #19468c}
+.agenda-dia-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #e0e8f8}
+.agenda-dia-nombre{font-size:11px;font-weight:600;color:#888;text-transform:uppercase}
+.agenda-dia-num{font-family:'Playfair Display',serif;font-size:20px;color:#0f2850;font-weight:700}
+.agenda-vacio{font-size:11px;color:#bbb;font-style:italic;text-align:center;padding:8px 0}
+.agenda-turno{background:white;border-radius:8px;padding:8px;margin-bottom:6px;border-left:3px solid #19468c}
+.agenda-confirmado{border-left-color:#228b50}
+.agenda-cancelado{border-left-color:#be2d2d}
+.agenda-atendido{border-left-color:#6030a0}
+.agenda-hora{font-size:11px;font-weight:700;color:#19468c;margin-bottom:3px}
+.agenda-pac{font-size:11px;color:#444;margin-bottom:4px}
+
+/* STATS */
+.stats-wrap{}
+.stats-cards{display:flex;gap:14px;padding:16px;flex-wrap:wrap}
+.stat-card{background:white;border-radius:12px;padding:20px 24px;display:flex;flex-direction:column;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.06);min-width:100px}
+.stat-num{font-family:'Playfair Display',serif;font-size:38px;font-weight:700}
+.stat-lbl{font-size:10px;color:#888;letter-spacing:.5px;margin-top:4px}
+.stats-medicos{background:white;border-radius:12px;margin:0 16px 16px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.stats-medicos h3{color:#0f2850;margin-bottom:14px;font-size:13px}
+.barra-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.barra-nombre{width:150px;font-size:12px;color:#444}
+.barra-cont{flex:1;background:#e8eef8;border-radius:6px;height:18px;overflow:hidden}
+.barra-fill{height:100%;border-radius:6px;transition:width .5s}
+.barra-val{width:28px;text-align:right;font-size:12px;font-weight:600;color:#444}
+
+/* FORM USUARIO */
+.form-usuario{display:flex;gap:8px;padding:14px 18px;flex-wrap:wrap;background:#f0f5ff;align-items:flex-end}
+.form-usuario input,.form-usuario select{border:1.5px solid #d2dce8;border-radius:8px;padding:8px 10px;font-size:12px;background:white}
+.btn-registrar{background:#19468c;color:white;padding:8px 18px;border-radius:8px;font-size:12px;font-weight:600}
+.btn-eliminar{background:#be2d2d;color:white;padding:4px 12px;border-radius:6px;font-size:11px}
+
+/* FORM TURNO */
+.form-turno{padding:4px 0}
+.form-titulo{font-family:'Playfair Display',serif;color:#0f2850;font-size:22px;margin-bottom:18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.form-field{display:flex;flex-direction:column;gap:5px}
+.form-field label{font-size:11px;font-weight:600;color:#5a6473;text-transform:uppercase;letter-spacing:.4px}
+.form-field input,.form-field select{border:1.5px solid #d2dce8;border-radius:8px;padding:9px 11px;font-size:13px;background:white;transition:border .2s}
+.form-field input:focus,.form-field select:focus{border-color:#19468c}
+.form-field input[readonly]{background:#f0f4fb;color:#888}
+.btn-crear-turno{width:100%;background:#19468c;color:white;padding:12px;border-radius:8px;font-size:14px;font-weight:600}
+.btn-crear-turno:hover{background:#0f2850}
+.dni-buscando{color:#19468c;font-style:italic;font-size:10px;margin-left:6px}
+
+/* NOTIF PANEL */
+.notif-panel{width:210px;background:#f4f7ff;border-left:1px solid #d2dce8;flex-shrink:0}
+.notif-header{background:linear-gradient(90deg,#0f2850,#19468c);color:white;padding:10px 12px;font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
+.notif-tag{color:#be9b5a;font-size:10px}
+.notif-item{padding:8px 12px;font-size:11px;border-bottom:1px solid #e0e8f8;display:flex;flex-direction:column;gap:3px}
+.notif-first{border-left:3px solid #be9b5a}
+.notif-pac{color:#444;font-size:11px}
+.notif-vacio{padding:20px;text-align:center;color:#aaa;font-size:12px;font-style:italic}
+
+/* FOOTER */
+.panel-footer{background:#e0e8f5;border-top:1px solid #d2dce8;padding:5px 22px;display:flex;justify-content:space-between;font-size:11px;color:#666}
+.footer-pat{color:#be9b5a;font-style:italic}
+
+/* NOTIF GLOBAL */
+.notif{position:fixed;top:20px;right:20px;padding:11px 22px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.15);animation:slideIn .3s ease}
+.notif-ok{background:#1a7040;color:white}
+.notif-error{background:#aa2020;color:white}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal-box{background:white;border-radius:14px;padding:28px;max-width:560px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2);max-height:90vh;overflow-y:auto;animation:fadeIn .25s ease}
+.btn-cerrar-modal{width:100%;margin-top:14px;padding:9px;background:#e8eef8;border-radius:8px;color:#444;font-size:13px}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 768px) {
+  .burger{display:block}
+  .sidebar{position:fixed;left:0;top:0;bottom:0;z-index:200;transform:translateX(-100%);width:220px}
+  .sidebar-open{transform:translateX(0)}
+  .sidebar-overlay{display:block;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199}
+  .panel-main{padding:12px}
+  .notif-panel{display:none}
+  .header-contadores{gap:8px}
+  .contador{padding:6px 10px}
+  .cnt-num{font-size:20px}
+  .cnt-lbl{display:none}
+  .header-nombre{font-size:12px}
+  .header-usuario{font-size:10px}
+  .dash-cards{grid-template-columns:repeat(2,1fr)}
+  .agenda-grid{grid-template-columns:repeat(3,1fr)}
+  .form-grid{grid-template-columns:1fr}
+  .login-left{display:none}
+  .login-right{padding:40px 24px}
+  .stats-cards{gap:10px}
+  .stat-card{min-width:80px;padding:14px}
+  .dash-bienvenida{flex-direction:column;gap:14px;text-align:center}
+}
+
+@media (max-width: 480px) {
+  .dash-cards{grid-template-columns:1fr 1fr}
+  .agenda-grid{grid-template-columns:repeat(2,1fr)}
+  .header-contadores{display:none}
+}
+
+/* CALENDARIO */
+.cal-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;flex-wrap:wrap;gap:10px}
+.cal-controles{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cal-esp-sel{border:1.5px solid #d2dce8;border-radius:8px;padding:7px 12px;font-size:13px;background:white}
+.btn-nav{background:#e8eef8;color:#19468c;padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;border:none;cursor:pointer}
+.btn-nav:hover{background:#d0dcf0}
+.cal-grid{display:flex;overflow-x:auto;border-top:1px solid #e8eef8}
+.cal-hora-col{display:flex;flex-direction:column;min-width:52px}
+.cal-hora-label{height:32px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#888;border-bottom:1px solid #f0f4fb}
+.cal-dia-col{flex:1;display:flex;flex-direction:column;min-width:80px;border-left:1px solid #e8eef8}
+.cal-dia-header{height:42px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f4f8ff;border-bottom:1px solid #e0e8f8;gap:2px}
+.cal-hoy .cal-dia-header{background:#dce8ff}
+.cal-dia-nombre{font-size:10px;font-weight:600;color:#888;text-transform:uppercase}
+.cal-dia-num{font-size:13px;font-weight:700;color:#0f2850}
+.cal-celda{height:32px;display:flex;align-items:center;justify-content:center;font-size:11px;border-bottom:1px solid #f0f4fb;transition:all .15s;cursor:pointer}
+.cal-libre{background:white;color:#228b50}
+.cal-libre:hover{background:#e6faee;transform:scale(1.05)}
+.cal-ocupado{background:#ffeded;color:#be2d2d;cursor:not-allowed}
+.cal-pasado{background:#f8f8f8;color:#ccc;cursor:default}
+.cal-leyenda{display:flex;gap:20px;padding:12px 20px;background:#f8faff;border-top:1px solid #e8eef8}
+.cal-ley-item{display:flex;align-items:center;gap:6px;font-size:12px;color:#666}
+.cal-dot{width:14px;height:14px;border-radius:50%;display:inline-block}
+.cal-dot.libre{background:#d4f5e2}
+.cal-dot.ocupado{background:#ffeded;border:2px solid #be2d2d}
+.cal-dot.pasado{background:#f0f0f0;border:2px solid #ccc}
+
+/* SEMAFORO */
+.semaforo{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0}
+
+/* BOTONES ACCION PACIENTE */
+.btn-accion{padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-right:4px;border:none;cursor:pointer;color:white}
+.btn-accion.verde{background:#228b50}
+.btn-accion.rojo{background:#be2d2d}
+
+/* WA MOCK */
+.wa-header{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:10px 10px 0 0;color:white;font-weight:600;font-size:14px}
+.wa-icono{font-size:22px}
+.wa-body{background:#e5ddd5;padding:16px;min-height:100px}
+.wa-burbuja{background:white;border-radius:0 10px 10px 10px;padding:12px 16px;max-width:90%;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.wa-pac{font-size:11px;color:#888;margin-bottom:6px;font-weight:600}
+.wa-burbuja p{font-size:13px;color:#333;line-height:1.5}
+.wa-hora{font-size:10px;color:#aaa;text-align:right;margin-top:6px}
+.wa-nota{background:#fffde7;padding:12px 16px;font-size:11px;color:#666;font-style:italic;border-radius:0 0 10px 10px;border-top:1px solid #f0e8a0}
+
+/* FORM SUB */
+.form-sub{color:#888;font-size:13px;margin-bottom:8px}
+
+/* EXPORT BTN en sidebar ya cubierto por side-verde */
+
+/* AUTOCOMPLETADO */
+.autocomplete-list{position:absolute;top:100%;left:0;right:0;background:white;border:1.5px solid #d2dce8;border-radius:0 0 8px 8px;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.1);max-height:180px;overflow-y:auto}
+.autocomplete-item{padding:9px 14px;font-size:13px;cursor:pointer;transition:background .12s}
+.autocomplete-item:hover{background:#f0f5ff;color:#19468c}
+
+/* POPUP TURNO CALENDARIO */
+.popup-turno-info{background:#f8faff;border-radius:10px;padding:16px;margin:14px 0;display:flex;flex-direction:column;gap:10px}
+.popup-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding-bottom:8px;border-bottom:1px solid #e8eef8}
+.popup-row:last-child{border:none;padding:0}
+.popup-row span:first-child{color:#888;font-size:12px;min-width:90px}
+.popup-acciones{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.btn-popup{padding:9px 20px;border-radius:8px;font-size:13px;font-weight:600;color:white;border:none;cursor:pointer;flex:1}
+.btn-popup.verde{background:#228b50}
+.btn-popup.azul{background:#1e64b9}
+.btn-popup.rojo{background:#be2d2d}
+
+/* EXPORTAR CSV MODAL */
+.export-section{margin-bottom:18px}
+.export-sec-tit{font-size:13px;font-weight:600;color:#0f2850;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #e8eef8}
+.export-cols{display:flex;flex-wrap:wrap;gap:8px}
+.export-check{display:flex;align-items:center;gap:6px;padding:6px 12px;border:1.5px solid #d2dce8;border-radius:20px;font-size:12px;cursor:pointer;transition:all .15s;user-select:none}
+.export-check input{display:none}
+.export-check.activo{background:#e8f0ff;border-color:#19468c;color:#19468c;font-weight:600}
+.export-filtros{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.export-preview{background:#f0f8e8;border:1.5px solid #b8e0b0;border-radius:8px;padding:10px 16px;font-size:13px;color:#228b50;font-weight:600;margin-top:8px}
